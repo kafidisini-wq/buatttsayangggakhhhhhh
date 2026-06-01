@@ -3,27 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Salshabila | Love Journey</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>for salshabila | love journey</title>
+<link href="https://fonts.googleapis.com/css2?family=playfair+display:ital,wght@0,400;1,700&family=poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root { --pink: #ff69b4; --bg: #0f050d; --glass: rgba(255, 255, 255, 0.06); }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); font-family: 'poppins', sans-serif; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
 
-  /* Opening Animation */
+  /* opening animation */
   #envelope-page { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: radial-gradient(circle, #6b2e53, #0f050d); }
   .btn-open { padding: 20px 40px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s; margin-top: 20px; }
   .btn-open:hover { background: var(--pink); border-color: var(--pink); transform: scale(1.05); }
 
-  /* Content */
+  /* content */
   .main-content { display: none; opacity: 0; transition: 1s; }
   .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #6b2e53 0%, #0f050d 70%); }
-  h1 { font-family: 'Playfair Display', serif; font-size: 3.8rem; margin: 0; }
+  h1 { font-family: 'playfair display', serif; font-size: 3.8rem; margin: 0; }
   .timer { font-size: 1.6rem; color: var(--pink); font-weight: 700; margin: 20px 0; letter-spacing: 2px; }
   
   .section { padding: 80px 20px; max-width: 800px; margin: 0 auto; }
   .glass-card { background: var(--glass); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 30px; }
   
+  /* music player */
+  .music-card { display: flex; align-items: center; justify-content: center; gap: 20px; margin: 20px 0; }
+  .play-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--pink); border: none; color: white; cursor: pointer; font-size: 20px; transition: 0.3s; }
+  .play-btn:hover { transform: scale(1.1); box-shadow: 0 0 20px var(--pink); }
+
   .timeline { border-left: 2px solid var(--pink); padding-left: 30px; margin: 30px 0; }
   .timeline-item { margin-bottom: 40px; position: relative; }
   .timeline-item::before { content: '♥'; position: absolute; left: -37px; color: var(--pink); font-size: 20px; }
@@ -36,31 +41,43 @@
 <body>
 
   <div id="envelope-page">
-    <h2 style="font-family: 'Playfair Display'">Sebuah pesan spesial untuk...</h2>
-    <div class="btn-open" onclick="openEnvelope()">Salshabila 💌</div>
+    <h2 style="font-family: 'playfair display'">sebuah pesan spesial untuk...</h2>
+    <div class="btn-open" onclick="openEnvelope()">salshabila 💌</div>
   </div>
 
   <div id="main-content" class="main-content">
     <div class="hero">
       <p>to my dearest,</p>
-      <h1>Salshabila</h1>
+      <h1>salshabila</h1>
       <div id="counter" class="timer">...</div>
-      <p style="opacity: 0.7;">18 April 2025 - Selamanya</p>
+      <p style="opacity: 0.7;">18 april 2025 - selamanya</p>
     </div>
+
+    <!-- music section -->
+    <section class="section">
+      <div class="glass-card music-card">
+        <div>
+          <h3 style="margin:0;">lagu kita</h3>
+          <p style="margin:0; opacity:0.7;">klik untuk memutar suasana</p>
+        </div>
+        <button class="play-btn" id="playBtn" onclick="toggleMusic()">▶</button>
+        <audio id="bgMusic" loop src=""></audio>
+      </div>
+    </section>
 
     <section class="section">
       <div class="glass-card">
-        <h2 style="font-family: 'Playfair Display'; margin-top:0;">Isi Hati</h2>
-        <p style="line-height: 1.9; font-size: 1.1rem;">"Sayang, udah <span id="days-text"></span> hari kita bareng. Makasih ya udah mau sabar dan terus bertahan. Perjalanan kita nggak selalu mulus, tapi aku janji, aku bakal selalu usahain yang terbaik buat bikin kamu bahagia. Kamu segalanya buat aku."</p>
+        <h2 style="font-family: 'playfair display'; margin-top:0;">isi hati</h2>
+        <p style="line-height: 1.9; font-size: 1.1rem;">"sayang, udah <span id="days-text"></span> hari kita bareng. makasih ya udah mau sabar dan terus bertahan. perjalanan kita nggak selalu mulus, tapi aku janji, aku bakal selalu usahain yang terbaik buat bikin kamu bahagia. kamu segalanya buat aku."</p>
       </div>
     </section>
 
     <section class="section">
       <h2 style="text-align:center; margin-bottom: 50px;">our journey</h2>
       <div class="timeline">
-        <div class="timeline-item"><h3>18 April 2025</h3><p>Hari pertama kita resmi jadi satu.</p></div>
-        <div class="timeline-item"><h3>Banyak Cerita</h3><p>Tawa, tangis, dan semua momen yang bikin kita makin kuat.</p></div>
-        <div class="timeline-item"><h3>Masa Depan</h3><p>Menunggu momen-momen indah berikutnya sama kamu.</p></div>
+        <div class="timeline-item"><h3>18 april 2025</h3><p>hari pertama kita resmi jadi satu.</p></div>
+        <div class="timeline-item"><h3>banyak cerita</h3><p>tawa, tangis, dan semua momen yang bikin kita makin kuat.</p></div>
+        <div class="timeline-item"><h3>masa depan</h3><p>menunggu momen-momen indah berikutnya sama kamu.</p></div>
       </div>
     </section>
 
@@ -75,7 +92,6 @@
   </div>
 
   <script>
-    // FIX TANGGAL JADIAN
     const start = new Date("2025-04-18"); 
     const diff = Math.floor((new Date() - start) / (1000 * 60 * 60 * 24));
     document.getElementById('counter').innerText = `${diff} hari penuh cinta`;
@@ -90,6 +106,18 @@
         main.style.display = 'block';
         setTimeout(() => main.style.opacity = '1', 50);
       }, 800);
+    }
+
+    function toggleMusic() {
+      const audio = document.getElementById('bgMusic');
+      const btn = document.getElementById('playBtn');
+      if (audio.paused) {
+        audio.play();
+        btn.innerText = '⏸';
+      } else {
+        audio.pause();
+        btn.innerText = '▶';
+      }
     }
   </script>
 </body>
