@@ -3,168 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You</title>
+<title>For Salshabila</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
+  * { box-sizing: border-box; }
   body {
-    margin: 0;
-    padding: 0;
-    background-color: #ffb6c1; /* Pink lembut */
-    font-family: 'Arial', sans-serif;
+    margin: 0; padding: 0;
+    background: radial-gradient(circle at center, #6b2e53 0%, #1a0b16 100%);
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
     overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
-  /* --- SECTION 1: KOTAK KEJUTAN --- */
-  .section-1 {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  #gift-box {
-    width: 150px;
-    cursor: pointer;
-    transition: transform 0.2s;
-    z-index: 10;
-  }
-  #gift-box:active {
-    transform: scale(0.9);
-  }
-  .particle {
-    position: absolute;
-    width: 60px; 
-    pointer-events: none;
-    animation: popUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    z-index: 5;
-  }
-  @keyframes popUp {
-    0% { transform: translate(0, 0) scale(0.2); opacity: 1; }
-    100% { transform: translate(var(--tx), var(--ty)) scale(1.2) rotate(var(--rot)); opacity: 0; }
-  }
+  /* Fade-in Animation */
+  .fade-in { animation: fadeIn 1.2s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* --- SECTION 2: TEKS UTAMA --- */
-  .section-2 {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-  .teks-sayang {
-    font-size: 3.5rem;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px #ff69b4, 0 0 30px #ff1493;
-    animation: heartbeat 2s infinite;
-  }
-  @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-  }
+  /* Hero Section */
+  .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+  h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; text-align: center; margin-bottom: 20px; }
+  .hero p { font-size: 1.1rem; line-height: 1.8; color: #ffd1dc; text-align: center; max-width: 600px; text-transform: lowercase; }
 
-  /* --- SECTION 3: YOUR NAUGHTY PICTURE --- */
-  .section-3 {
-    padding: 50px 20px 100px 20px;
-    text-align: center;
-  }
-  .gallery-title {
-    font-size: 2rem;
-    color: #fff;
-    margin-bottom: 50px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    font-style: italic;
-  }
-  .gallery-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .foto-miring {
-    width: 80%;
-    max-width: 280px;
-    aspect-ratio: 9/16; 
-    object-fit: cover;
-    border: 8px solid white;
-    border-radius: 12px;
-    box-shadow: 5px 10px 20px rgba(0,0,0,0.3);
-    margin-bottom: 40px;
-    transition: transform 0.4s ease;
-  }
-  .foto-miring:hover, .foto-miring:active {
-    transform: scale(1.05) rotate(0deg) !important;
-    z-index: 20;
-    position: relative;
-  }
-  .foto-1 { transform: rotate(-12deg) translateX(-20px); }
-  .foto-2 { transform: rotate(15deg) translateX(25px); }
-  .foto-3 { transform: rotate(-8deg) translateX(-10px); }
+  /* Reasons Section */
+  .reasons-section { padding: 80px 20px; background: rgba(0,0,0,0.2); }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; text-align: center; margin-bottom: 50px; }
+  .grid-reasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+  .reason-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+  .reason-card h3 { color: #ffb6c1; margin-bottom: 10px; font-weight: 600; }
+
+  /* Gallery Section */
+  .gallery-section { padding: 80px 20px; }
+  .gallery-container { display: flex; flex-direction: column; align-items: center; gap: 60px; }
+  .photo-frame { width: 85%; max-width: 320px; background: #fff; padding: 15px 15px 50px 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); transition: transform 0.5s; }
+  .photo-frame img { width: 100%; aspect-ratio: 9/16; object-fit: cover; }
+  .photo-frame:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 10; }
+  
+  .tilt-1 { transform: rotate(-3deg); }
+  .tilt-2 { transform: rotate(2deg); }
+  .tilt-3 { transform: rotate(-2deg); }
+
+  footer { text-align: center; padding: 50px; font-size: 0.9rem; opacity: 0.6; }
 </style>
 </head>
 <body>
 
-  <!-- SECTION 1 -->
-  <div class="section-1" id="home">
-    <img src="https://cdn-icons-png.flaticon.com/512/4213/4213958.png" id="gift-box" alt="Kotak" onclick="bukaKotak()">
+  <!-- Hero -->
+  <div class="hero fade-in">
+    <h1>kamu segalanya<br>buat aku.</h1>
+    <p>
+      "jarak yang membentang sekarang ini cuma sementara,<br>
+      tapi rasa sayang dan rinduku ke kamu itu selamanya.<br>
+      terima kasih ya udah selalu sabar dan bertahan sejauh ini.<br>
+      salshabila, aku beruntung banget punya kamu."
+    </p>
   </div>
 
-  <!-- SECTION 2 -->
-  <div class="section-2">
-    <h1 class="teks-sayang">Kamu segalanya<br>buat aku sayang</h1>
-  </div>
-
-  <!-- SECTION 3 -->
-  <div class="section-3">
-    <h2 class="gallery-title">your naughty picture</h2>
-    <div class="gallery-container">
-      <img src="foto1.jpg" class="foto-miring foto-1" alt="Pic 1">
-      <img src="foto2.jpg" class="foto-miring foto-2" alt="Pic 2">
-      <img src="foto3.jpg" class="foto-miring foto-3" alt="Pic 3">
+  <!-- Reasons -->
+  <div class="reasons-section">
+    <h2 class="section-title">5 hal yang bikin aku jatuh cinta</h2>
+    <div class="grid-reasons">
+      <div class="reason-card"><h3>1. senyummu</h3><p>tiap kali liat kamu senyum, duniaku langsung berasa lebih terang.</p></div>
+      <div class="reason-card"><h3>2. kesabaranmu</h3><p>makasih ya udah sabar ngadepin sifat egoisku selama ini.</p></div>
+      <div class="reason-card"><h3>3. suaramu</h3><p>denger suara kamu pas lagi capek itu obat paling manjur.</p></div>
+      <div class="reason-card"><h3>4. cara kamu peduli</h3><p>hal kecil yang kamu lakuin buat aku, itu sangat berarti.</p></div>
+      <div class="reason-card"><h3>5. kamu, apa adanya</h3><p>nggak perlu jadi orang lain, kamu udah sempurna buat aku.</p></div>
     </div>
   </div>
 
-  <script>
-    function bukaKotak() {
-      const box = document.getElementById('gift-box');
-      const section = document.getElementById('home');
-      const asetCute = [
-        'bunga-cute.png',  
-        'kelinci-cute.png' 
-      ];
+  <!-- Gallery -->
+  <div class="gallery-section">
+    <h2 class="section-title">our memory lane</h2>
+    <div class="gallery-container">
+      <div class="photo-frame tilt-1"><img src="foto1.jpg" alt="pic"></div>
+      <div class="photo-frame tilt-2"><img src="foto2.jpg" alt="pic"></div>
+      <div class="photo-frame tilt-3"><img src="foto3.jpg" alt="pic"></div>
+    </div>
+  </div>
 
-      // Ledakan masif (Doppelganger)
-      let jumlahPartikelMencelat = 60; 
+  <footer>
+    <p>made with love for salshabila</p>
+  </footer>
 
-      for(let i = 0; i < jumlahPartikelMencelat; i++) {
-        let particle = document.createElement('img');
-        particle.src = asetCute[i % 2];
-        particle.className = 'particle';
-        
-        let tx = (Math.random() - 0.5) * 600 + 'px';
-        let ty = (Math.random() - 0.5) * 600 - 200 + 'px';
-        let rot = Math.random() * 720 + 'deg';
-        
-        particle.style.setProperty('--tx', tx);
-        particle.style.setProperty('--ty', ty);
-        particle.style.setProperty('--rot', rot);
-        
-        let scaleVariation = 1 + (Math.random() - 0.5) * 0.5;
-        particle.style.transform = `scale(${scaleVariation})`;
-        
-        particle.style.left = box.offsetLeft + (box.offsetWidth/2) - 30 + 'px';
-        particle.style.top = box.offsetTop + (box.offsetHeight/2) - 30 + 'px';
-        
-        section.appendChild(particle);
-        
-        setTimeout(() => {
-          particle.remove();
-        }, 1500);
-      }
-
-      setTimeout(() => {
-        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-      }, 1000);
-    }
-  </script>
 </body>
 </html>
-
