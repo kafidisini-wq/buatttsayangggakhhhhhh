@@ -3,87 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Salshabila</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>For Salshabila | The Journey</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
+  :root { --primary: #ff69b4; --bg: #0f050d; --glass: rgba(255, 255, 255, 0.05); }
   * { box-sizing: border-box; }
-  body {
-    margin: 0; padding: 0;
-    background: radial-gradient(circle at center, #6b2e53 0%, #1a0b16 100%);
-    font-family: 'Poppins', sans-serif;
-    color: #fff;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-  }
-
-  /* Fade-in Animation */
-  .fade-in { animation: fadeIn 1.2s ease-out; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  body { margin: 0; background: var(--bg); font-family: 'Poppins', sans-serif; color: #fff; overflow-x: hidden; }
 
   /* Hero Section */
-  .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
-  h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; text-align: center; margin-bottom: 20px; }
-  .hero p { font-size: 1.1rem; line-height: 1.8; color: #ffd1dc; text-align: center; max-width: 600px; text-transform: lowercase; }
+  .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #6b2e53 0%, #0f050d 70%); }
+  h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin-bottom: 10px; }
+  .timer { font-size: 1.5rem; color: var(--primary); margin-bottom: 20px; font-weight: 600; }
 
-  /* Reasons Section */
-  .reasons-section { padding: 80px 20px; background: rgba(0,0,0,0.2); }
-  .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; text-align: center; margin-bottom: 50px; }
-  .grid-reasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
-  .reason-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-  .reason-card h3 { color: #ffb6c1; margin-bottom: 10px; font-weight: 600; }
-
-  /* Gallery Section */
-  .gallery-section { padding: 80px 20px; }
-  .gallery-container { display: flex; flex-direction: column; align-items: center; gap: 60px; }
-  .photo-frame { width: 85%; max-width: 320px; background: #fff; padding: 15px 15px 50px 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); transition: transform 0.5s; }
-  .photo-frame img { width: 100%; aspect-ratio: 9/16; object-fit: cover; }
-  .photo-frame:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 10; }
+  /* Sections */
+  .section { padding: 80px 20px; max-width: 800px; margin: 0 auto; }
+  .glass-card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 30px; margin-bottom: 40px; }
   
-  .tilt-1 { transform: rotate(-3deg); }
-  .tilt-2 { transform: rotate(2deg); }
-  .tilt-3 { transform: rotate(-2deg); }
+  /* Letter Animation */
+  #letter { display: none; margin-top: 20px; line-height: 2; font-style: italic; }
+  
+  /* Timeline */
+  .timeline { border-left: 2px solid var(--primary); padding-left: 30px; }
+  .item { margin-bottom: 40px; position: relative; }
+  .item::before { content: '♥'; position: absolute; left: -37px; color: var(--primary); font-size: 20px; }
 
-  footer { text-align: center; padding: 50px; font-size: 0.9rem; opacity: 0.6; }
+  /* Gallery */
+  .gallery { display: grid; grid-template-columns: 1fr; gap: 30px; }
+  .photo { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.5s; }
+  .photo:hover { transform: scale(1.02); }
+
+  button { background: var(--primary); color: #fff; border: none; padding: 15px 30px; border-radius: 50px; font-weight: 600; cursor: pointer; }
 </style>
 </head>
 <body>
 
-  <!-- Hero -->
-  <div class="hero fade-in">
-    <h1>kamu segalanya<br>buat aku.</h1>
-    <p>
-      "jarak yang membentang sekarang ini cuma sementara,<br>
-      tapi rasa sayang dan rinduku ke kamu itu selamanya.<br>
-      terima kasih ya udah selalu sabar dan bertahan sejauh ini.<br>
-      salshabila, aku beruntung banget punya kamu."
-    </p>
+  <!-- HERO -->
+  <div class="hero">
+    <p>to my dearest,</p>
+    <h1>Salshabila</h1>
+    <div id="counter" class="timer">...</div>
+    <button onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'})">Scroll & Discover</button>
   </div>
 
-  <!-- Reasons -->
-  <div class="reasons-section">
-    <h2 class="section-title">5 hal yang bikin aku jatuh cinta</h2>
-    <div class="grid-reasons">
-      <div class="reason-card"><h3>1. senyummu</h3><p>tiap kali liat kamu senyum, duniaku langsung berasa lebih terang.</p></div>
-      <div class="reason-card"><h3>2. kesabaranmu</h3><p>makasih ya udah sabar ngadepin sifat egoisku selama ini.</p></div>
-      <div class="reason-card"><h3>3. suaramu</h3><p>denger suara kamu pas lagi capek itu obat paling manjur.</p></div>
-      <div class="reason-card"><h3>4. cara kamu peduli</h3><p>hal kecil yang kamu lakuin buat aku, itu sangat berarti.</p></div>
-      <div class="reason-card"><h3>5. kamu, apa adanya</h3><p>nggak perlu jadi orang lain, kamu udah sempurna buat aku.</p></div>
+  <!-- LETTER -->
+  <section class="section">
+    <div class="glass-card">
+      <h2 style="font-family: 'Playfair Display'">Buka Surat Aku</h2>
+      <button onclick="toggleLetter()">Buka Isi Hati</button>
+      <div id="letter">
+        <p>
+          "hai salshabila,<br>
+          kalau kamu lagi baca ini, artinya aku lagi mikirin kamu.<br>
+          makasih ya udah jadi bagian paling indah di hidupku.<br>
+          mungkin hari-harimu berat, mungkin kadang kita beda pendapat,<br>
+          tapi percaya deh, nggak ada satu detik pun aku pengen ninggalin.<br>
+          kamu itu rumah, tempat aku selalu mau pulang."
+        </p>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Gallery -->
-  <div class="gallery-section">
-    <h2 class="section-title">our memory lane</h2>
-    <div class="gallery-container">
-      <div class="photo-frame tilt-1"><img src="foto1.jpg" alt="pic"></div>
-      <div class="photo-frame tilt-2"><img src="foto2.jpg" alt="pic"></div>
-      <div class="photo-frame tilt-3"><img src="foto3.jpg" alt="pic"></div>
+  <!-- TIMELINE -->
+  <section class="section">
+    <h2 style="text-align:center; margin-bottom: 50px;">our little journey</h2>
+    <div class="timeline">
+      <div class="item"><h3>Pertemuan Pertama</h3><p>Hari yang ngerubah segalanya.</p></div>
+      <div class="item"><h3>Tawa Pertama</h3><p>Momen paling simpel tapi nggak bisa aku lupain.</p></div>
+      <div class="item"><h3>Janji Kita</h3><p>Untuk selalu ada, di masa sulit maupun senang.</p></div>
     </div>
-  </div>
+  </section>
 
-  <footer>
-    <p>made with love for salshabila</p>
-  </footer>
+  <!-- GALLERY -->
+  <section class="section">
+    <h2 style="text-align:center; margin-bottom: 50px;">my favs</h2>
+    <div class="gallery">
+      <img src="foto1.jpg" class="photo" alt="1">
+      <img src="foto2.jpg" class="photo" alt="2">
+      <img src="foto3.jpg" class="photo" alt="3">
+    </div>
+  </section>
 
+  <script>
+    // Timer
+    const start = new Date("2025-01-01");
+    const diff = Math.floor((new Date() - start) / (1000 * 60 * 60 * 24));
+    document.getElementById('counter').innerText = `${diff} hari penuh cinta`;
+
+    // Letter
+    function toggleLetter() {
+      const l = document.getElementById('letter');
+      l.style.display = (l.style.display === 'block') ? 'none' : 'block';
+    }
+  </script>
 </body>
 </html>
